@@ -1,0 +1,69 @@
+#form{
+    background:#cccccc;
+    border: 2px solid #556e7a;
+    border-radius: 5px;
+    padding: 10px;
+    
+
+}
+
+label.volna {
+    float:left;
+    width:40px;
+    margin:4px;
+    background-color:#EFEFEF;
+    border-radius:4px;
+    border:1px solid #D0D0D0;
+    overflow:auto;
+
+}
+
+label.rezervovana {
+    float:left;
+    width:40px;
+    margin:4px;
+    background-color:#E5E600;
+    border-radius:4px;
+    border:1px solid #D0D0D0;
+    overflow:auto;
+
+}
+
+label.potvrdena {
+    float:left;
+    width:40px;
+    margin:4px;
+    background-color:red;
+    border-radius:4px;
+    border:1px solid #D0D0D0;
+    overflow:auto;
+
+
+}
+
+label span {
+    text-align:center;
+    font-size: 0.7em;
+    padding:13px 0px;
+    display:block;
+ 
+}
+.volna:hover{
+    background-color: purple;
+}
+
+label input {
+    /*position:absolute;*/
+    top:-20px;
+}
+
+.hidden{
+    display: none;
+}
+th,td{
+    text-align: center;
+
+}
+.prvy-stlpec{
+    padding: 0px 5px;
+}
