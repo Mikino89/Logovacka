@@ -80,7 +80,7 @@ require_once('data/config.php');
                     $trieda = 'volna';
                     $text = 'V';
                     $onclick = "onclick=\"rezervuj('$datum', '$cas')\""; 
-                   // $onclick = "onclick=\"ddd()\"";
+                
                 }
 
 

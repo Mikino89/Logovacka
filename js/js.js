@@ -1,7 +1,4 @@
-function rezervuj(datum, cas)
-{
-    
-     
+function rezervuj(datum, cas){
     bootbox.dialog({
     title: "Formulár...",
     message:         '<div id="form">' +
@@ -24,10 +21,11 @@ function rezervuj(datum, cas)
                 '</tr>' +
                 '<tr>' +
                     '<td>Váš email:</td>' +
-                    '<td><input type="email" name="email" id="email" /></td>' +
+                    '<td><input type="text" name="email" id="email" onblur="kontrola1()"/></td>' +
+                    '<td class="kontrola1"></td>' +
                 '</tr>' +
             '</table>' +
-                '<input type="submit" value="Odošli" name="odosli" onclick="odosliFormular()" />' +
+                '<input type="submit" value="Odošli" name="odosli"  id="fsubmit" onclick="odosliFormular()" />' +
         '</div>',
 }); 
     $("#datum").val(datum);
@@ -38,9 +36,25 @@ function rezervuj(datum, cas)
 
 }
 
+function kontrola1(){
 
-function odosliFormular()
-{
+    var mail = $('#email').val();
+
+     
+    if(!(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-z]{2,4}$/.test(mail))){
+        $('.kontrola1').text('Zle zadaná emailová adresa!');
+         $("#fsubmit").prop("disabled",true);       
+    }
+    else{
+        $('.kontrola1').text('');
+        $("#fsubmit").prop("disabled",false);
+    }
+ 
+}
+
+
+
+function odosliFormular(){
     var datum = $("#datum").val();
     var cas = $("#cas").val();
     var meno = $("#meno").val();
@@ -65,9 +79,8 @@ function odosliFormular()
         }
 
         // ulozene ok
+        alert('Rezervácia prebehla úspešne.')
         window.location.reload();
+        
     });
 }
-
-
-
