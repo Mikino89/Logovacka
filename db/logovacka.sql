@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Hostiteľ: 127.0.0.1
--- Čas generovania: Pi 19.Dec 2014, 14:20
+-- Čas generovania: So 20.Dec 2014, 11:05
 -- Verzia serveru: 5.6.16
 -- Verzia PHP: 5.5.11
 
@@ -29,10 +29,10 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `zaznamy` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `datum` date NOT NULL,
-  `cas` varchar(255) COLLATE utf8_slovak_ci NOT NULL,
+  `cas` varchar(2) COLLATE utf8_slovak_ci NOT NULL,
   `meno` varchar(50) COLLATE utf8_slovak_ci NOT NULL,
   `telefon` int(25) NOT NULL,
-  `email` varchar(25) COLLATE utf8_slovak_ci NOT NULL,
+  `email` varchar(50) COLLATE utf8_slovak_ci NOT NULL,
   `stav` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_slovak_ci AUTO_INCREMENT=1 ;
