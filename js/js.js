@@ -1,3 +1,15 @@
+// jQuery část
+/////$.get('test.php', {jmeno: "Pepa", prijmeni: "Novak"});
+// odešle pomocí metody get PHP skriptu test.php dvě
+// proměnné, jmeno a prijmeni
+ 
+// PHP část      
+///////$jmeno = $_GET['jmeno'];
+///////$prijmeni = $_GET['prijmeni'];
+// Přijmutí proměnných v PHP pomocí metody GET
+
+
+
 function rezervuj(datum, cas){
     bootbox.dialog({
     title: "Formulár...",
@@ -13,16 +25,17 @@ function rezervuj(datum, cas){
                 '</tr>' +
                 '<tr>' +
                     '<td>Vaše meno:</td>' +
-                    '<td><input type="text" name="meno" id="meno" /></td>' +
+                    '<td><input type="text" name="meno" id="meno" maxlength="50" /></td>' +
                 '</tr>' +
                 '<tr>' +
                     '<td>Vaše tel. č.:</td>' +
-                    '<td><input type="text" name="telefon" id="telefon" /></td>' +
+                    '<td><input type="text" name="telefon" id="telefon" maxlength="25" oninput="kontrolaTelefon()" /></td>' +
+                    '<td class="vypisKontrolaTelefon"></td>' +
                 '</tr>' +
                 '<tr>' +
                     '<td>Váš email:</td>' +
-                    '<td><input type="text" name="email" id="email" onblur="kontrola1()"/></td>' +
-                    '<td class="kontrola1"></td>' +
+                    '<td><input type="text" name="email" id="email" maxlength="50" oninput="kontrolaEmail()" /></td>' +
+                    '<td class="vypisKontrolaEmail"></td>' +
                 '</tr>' +
             '</table>' +
                 '<input type="submit" value="Odošli" name="odosli"  id="fsubmit" onclick="odosliFormular()" />' +
@@ -31,27 +44,36 @@ function rezervuj(datum, cas){
     $("#datum").val(datum);
     $("#cas").val(cas);
     $("#form").css("display", "table");
-    
-
-
 }
 
-function kontrola1(){
+function kontrolaEmail(){
 
     var mail = $('#email').val();
 
-     
+
     if(!(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-z]{2,4}$/.test(mail))){
-        $('.kontrola1').text('Zle zadaná emailová adresa!');
+        $('.vypisKontrolaEmail').text('Zadajte emailovú adresu v správnom tvare!');
          $("#fsubmit").prop("disabled",true);       
     }
     else{
-        $('.kontrola1').text('');
+        $('.vypisKontrolaEmail').text('');
         $("#fsubmit").prop("disabled",false);
     }
- 
 }
 
+function kontrolaTelefon(){
+       var tel = $('#telefon').val();
+
+
+    if(!(/\d/.test(tel))){
+        $('.vypisKontrolaTelefon').text('Musí obsahovať iba čísla!');
+         $("#fsubmit").prop("disabled",true);       
+    }
+    else{
+        $('.vypisKontrolaTelefon').text('');
+        $("#fsubmit").prop("disabled",false);
+    }
+}
 
 
 function odosliFormular(){
