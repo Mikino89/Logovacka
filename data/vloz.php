@@ -21,7 +21,23 @@ $stv = 1;
 if(empty($datum) || empty($cas) || empty($meno) || empty($telefon) || empty($email))
     die("error");
 
-    $zapis = mysqli_prepare($mysqli, "INSERT INTO zaznamy (datum, cas, meno, telefon, email, stav) VALUES(?, ?, ?, ?, ?, ?)");
+if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+    die('Zle zadaný email!');
+}
+ 
+if(!preg_match('/^[0-9]+$/', $telefon)){
+    die('Zle zadané telefónne číslo!');
+}
+
+if(!preg_match('/^[0-9]{1,2}+$/', $cas)){
+    die('Zle zadaný čas!');
+}
+
+if(!preg_match('/^[0-9]{4}+[-]+[0-9]{2}+[-]+[0-9]{2}$/', $datum)){
+    die('Zle zadaný dátum!');
+}
+
+$zapis = mysqli_prepare($mysqli, "INSERT INTO zaznamy (datum, cas, meno, telefon, email, stav) VALUES(?, ?, ?, ?, ?, ?)");
     mysqli_stmt_bind_param($zapis, 'sssssi', $datum, $cas, $meno, $telefon, $email, $stv);
     mysqli_stmt_execute($zapis);
 
