@@ -1,6 +1,26 @@
 <?php
+session_start();
+error_reporting(E_ALL ^ E_NOTICE);
+
 require_once('data/db.php');
 require_once('data/config.php');
+
+
+$_SESSION['stranka'] = ((isset($_SESSION['stranka'])) ? $_SESSION['stranka'] : 0);
+if(empty($_GET)){
+    session_unset();
+}
+if($_GET['page'] == 'next'){
+     $_SESSION['stranka']++;
+}
+if($_GET['page'] == 'back'){
+    $_SESSION['stranka']--;
+}
+
+
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -40,11 +60,8 @@ require_once('data/config.php');
 
         <?php
 
-
-
-
-
-
+        
+        $mod = ($_SESSION['stranka']*7);
 
         echo '<table border="1">';
         echo'<tr>';
@@ -53,7 +70,7 @@ require_once('data/config.php');
         {
             echo"<th>$z:00</th>";
         }
-        for($x = 0; $x < 7; $x++)
+        for($x = (0+$mod); $x < (7+$mod); $x++)
         {
             $date = date('Y-m-d', time()+($x*86400));
             $date1 = date('d.m.Y', time()+($x*86400));
@@ -94,12 +111,21 @@ require_once('data/config.php');
         }
         echo'</table>';
 
-      
 
        ?>
-
-
-
-
+        
+        
+        <form action="index.php" method="get">
+            <input type="submit" name="page" value="back" />
+            <input type="submit" name="" value="dnes" />
+            <input type="submit" name="page" value="next" />
+        </form>
+<?php
+//echo $qwer;
+//echo $_SESSION['stranka'];
+?>
+        
+        
+        
     </body>
 </html>
