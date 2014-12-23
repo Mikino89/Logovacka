@@ -1,15 +1,3 @@
-// jQuery část
-/////$.get('test.php', {jmeno: "Pepa", prijmeni: "Novak"});
-// odešle pomocí metody get PHP skriptu test.php dvě
-// proměnné, jmeno a prijmeni
- 
-// PHP část      
-///////$jmeno = $_GET['jmeno'];
-///////$prijmeni = $_GET['prijmeni'];
-// Přijmutí proměnných v PHP pomocí metody GET
-
-
-
 function rezervuj(datum, cas){
     bootbox.dialog({
     title: "Formulár...",
@@ -28,14 +16,14 @@ function rezervuj(datum, cas){
                     '<td><input type="text" name="meno" id="meno" maxlength="50" /></td>' +
                 '</tr>' +
                 '<tr>' +
-                    '<td>Vaše tel. č.:</td>' +
-                    '<td><input type="text" name="telefon" id="telefon" maxlength="25" oninput="kontrolaTelefon()" /></td>' +
-                    '<td class="vypisKontrolaTelefon"></td>' +
-                '</tr>' +
-                '<tr>' +
                     '<td>Váš email:</td>' +
                     '<td><input type="text" name="email" id="email" maxlength="50" oninput="kontrolaEmail()" /></td>' +
                     '<td class="vypisKontrolaEmail"></td>' +
+                '</tr>' +
+                '<tr>' +
+                    '<td>Vaše tel. č.:</td>' +
+                    '<td><input type="text" name="telefon" id="telefon" maxlength="25" oninput="kontrolaTelefon()" /></td>' +
+                    '<td class="vypisKontrolaTelefon"></td>' +
                 '</tr>' +
             '</table>' +
                 '<input type="submit" value="Odošli" name="odosli"  id="fsubmit" onclick="odosliFormular()" />' +
@@ -65,7 +53,7 @@ function kontrolaTelefon(){
        var tel = $('#telefon').val();
 
 
-    if(!(/\d/.test(tel))){
+    if(!(/^[0-9]+$/.test(tel))){
         $('.vypisKontrolaTelefon').text('Musí obsahovať iba čísla!');
          $("#fsubmit").prop("disabled",true);       
     }
@@ -102,7 +90,7 @@ function odosliFormular(){
 
         // ulozene ok
         alert('Rezervácia prebehla úspešne.')
-        window.location.reload();
+        window.location.replace("index.php?page=done");
         
     });
 }
