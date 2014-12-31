@@ -15,7 +15,6 @@ label.volna {
     border-radius:4px;
     border:1px solid #D0D0D0;
     overflow:auto;
-
 }
 
 label.rezervovana {
@@ -26,7 +25,6 @@ label.rezervovana {
     border-radius:4px;
     border:1px solid #D0D0D0;
     overflow:auto;
-
 }
 
 label.potvrdena {
@@ -37,8 +35,38 @@ label.potvrdena {
     border-radius:4px;
     border:1px solid #D0D0D0;
     overflow:auto;
+}
+label.volna_old {
+    float:left;
+    width:40px;
+    margin:4px;
+    background-color:#EFEFEF;
+    border-radius:4px;
+    border:1px solid #D0D0D0;
+    overflow:auto;
+    opacity:0.5;
+}
 
+label.rezervovana_old {
+    float:left;
+    width:40px;
+    margin:4px;
+    background-color:#E5E600;
+    border-radius:4px;
+    border:1px solid #D0D0D0;
+    overflow:auto;
+    opacity:0.5;
+}
 
+label.potvrdena_old {
+    float:left;
+    width:40px;
+    margin:4px;
+    background-color:red;
+    border-radius:4px;
+    border:1px solid #D0D0D0;
+    overflow:auto;
+    opacity:0.5;
 }
 
 label span {
