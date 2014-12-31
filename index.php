@@ -50,7 +50,7 @@ if($_GET['page'] == 'back'){
             }
 
 
-          //   print_r($datum_cas);
+          //  print_r($datum_cas);
             // na testovacie ucely
              echo '<br />';
 
@@ -80,23 +80,41 @@ if($_GET['page'] == 'back'){
             {
                 $cas = "$y";
                 $datum = $date;
+                $datCas = ($datum.'-'.$y);
                 $idx = ($y.'-'.$date.'-1');
                 $idx1 = ($y.'-'.$date.'-2');
 
                 if(array_search($idx1, $datum_cas)){
-                    $trieda = 'potvrdena';
                     $text = 'P';
                     $onclick = '';
+                    if($datCas > date('Y-m-d-H')){
+                        $trieda='potvrdena';
+                    }
+                    else{
+                        $trieda='potvrdena_old';
+                    }
                 }
                 elseif(array_search($idx, $datum_cas)){
-                    $trieda = 'rezervovana';
                     $text = 'R';
                     $onclick = '';
+                    if($datCas > date('Y-m-d-H')){
+                        $trieda = 'rezervovana';
+                    }
+                    else{
+                        $trieda='rezervovana_old';
+                    }
                 }
                 else{
                     $trieda = 'volna';
                     $text = 'V';
-                    $onclick = "onclick=\"rezervuj('$datum', '$cas')\""; 
+                    if($datCas > date('Y-m-d-H')){
+                        $onclick = "onclick=\"rezervuj('$datum', '$cas')\"";
+                    }
+                    else{
+                        $onclick = '';
+                        $trieda='volna_old';
+                    }
+                    
                 
                 }
 
