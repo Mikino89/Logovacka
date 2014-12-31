@@ -44,7 +44,7 @@ $zapis = mysqli_prepare($mysqli, "INSERT INTO zaznamy (datum, cas, meno, telefon
 
 
 if ($zapis)
-    echo "ok";
+    echo "ok";  
 else
     echo "error";
 
